@@ -59,6 +59,9 @@ router.post('/login', [
     check('email', 'Enter a valid email').isEmail(),
     check('password', 'Password is required').exists()
 ], async (req, res) => {
+
+    console.log("Received Body:", req.body); 
+    
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
